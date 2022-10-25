@@ -1,0 +1,13 @@
+.filter-box {
+  background-color: #eef3f6;
+  border: none !important;
+  border-radius: 8px;
+  color: #708180;
+  &__input {
+    border: none;
+    background-color: #eef3f6 !important;
+    .ant-input {
+      background-color: #eef3f6 !important;
+    }
+  }
+}

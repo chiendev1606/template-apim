@@ -1,0 +1,16 @@
+.dashboard{
+  &__calc{
+    //padding: 15px 45px ;
+  }
+  &__wrap{
+  padding: 0.5rem 0;
+  }
+  &__alert{
+    background-color: rgba(64, 169, 255, 0.1);
+    padding: 18px;
+    border-radius: 4px;
+    p{
+      margin-bottom: 0;
+    }
+  }
+}

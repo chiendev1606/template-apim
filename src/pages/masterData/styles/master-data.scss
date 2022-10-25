@@ -1,0 +1,15 @@
+.master-data {
+  &__menu-box {
+    padding: 0 36px;
+  }
+  &__menu {
+    background-color: #fff;
+    color: #1a2625;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    display: block;
+    padding: 17px 31px;
+    border-radius: 8px;
+  }
+}

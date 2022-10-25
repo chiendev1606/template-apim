@@ -1,0 +1,17 @@
+// main layout
+.main-layout {
+  main {
+    margin: 5px 16px 0px !important;
+  }
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(26, 144, 255, 0.28);
+}
+
+.ant-select .ant-select-selector{
+  border-radius: 6px !important;
+}
+
+.ant-picker {
+  border-radius: 6px;
+}

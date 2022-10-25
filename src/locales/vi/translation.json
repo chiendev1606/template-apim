@@ -1,0 +1,51 @@
+{
+  "common": {
+    "create": "Thêm mới",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "close": "Đóng",
+    "yes": "Đồng ý",
+    "cancel": "Hủy",
+    "overview": "Tổng quan"
+  },
+  "branch": {
+    "name": "Tên chi nhánh",
+    "address": "Địa chỉ",
+    "phoneNumber": "Số điện thoại",
+    "account": "Tài khoản truy cập",
+    "password": "Mật khẩu",
+    "passwordConfirm": "Nhập lại mật khẩu",
+    "action": "Hoạt động",
+    "addBranch": "Thêm chi nhánh",
+    "findBranch": "Tìm kiếm chi nhánh",
+    "branchDetails": "Chi tiết chi nhánh",
+    "productName": "Tên sản phẩm/ Dịch vụ",
+    "category": "Loại",
+    "price": "Giá",
+    "active": "Kích hoạt bán",
+    "branchEdit": "Sửa chi nhánh",
+    "branchAdd": "Thêm chi nhánh"
+  },
+  "business": {
+    "info": "Thông tin doanh nghiệp",
+    "companyName": "Tên Công Ty",
+    "contact": "Người liên hệ",
+    "field": "Lĩnh vực",
+    "desc": "Mô tả doanh nghiệp",
+    "address": "Địa chỉ trụ sở",
+    "taxNumber": "Mã số thuế",
+    "bankInfo": "Thông tin ngân hàng",
+    "email": "Email",
+    "link": "Liên kết(web/facebook...)",
+    "license": "Business License",
+    "code": "Business Code",
+    "contract": "Contract Details",
+    "map": "Map",
+    "city": "City/ Province",
+    "district": "District",
+    "subDistrict": "Sub-District",
+    "street": "Street",
+    "representative": "Representative"
+  }
+}
