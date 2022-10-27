@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, DatePicker, Divider, Radio, Row, Select, Space, Table, Typography } from 'antd';
+import { Button, Col, DatePicker, Divider, Form, Radio, Row, Select, Space, Table, Typography } from 'antd';
 import { CheckOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import './../styles/dashboard.scss';
 import { ColumnsType } from 'antd/es/table';
@@ -106,82 +106,106 @@ const Dashboard: React.FC = (): JSX.Element => {
   return (
     <div className="dashboard">
       <div className="dashboard__wrap panel full-width">
-        <div style={{ padding: '1rem' }}>
-          <Title level={2}>게임 내역</Title>
-          <Title level={4}>검색</Title>
-          <Row gutter={[10, 10]} style={{ width: '100%', marginTop: '20px' }}>
-            <Col span={9}>소속 에이전트</Col>
-            <Col span={15}>
-              <Select size="large" defaultValue="lucy" style={{ width: '100%' }}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>
-                  Disabled
-                </Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
-            </Col>
-            <Divider />
-            <Col span={9}>벤더</Col>
-            <Col span={15}>
-              <Select size="large" defaultValue="lucy" style={{ width: '100%' }}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>
-                  Disabled
-                </Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
-            </Col>
-            <Divider />
-            <Col span={9}>기간</Col>
-            <Col span={15}>
-              <Row gutter={[20, 0]}>
-                <Col span={12}>
-                  <DatePicker size="large" style={{ width: '100%' }} showTime />
-                </Col>
-                <Col span={12}>
-                  <DatePicker size="large" style={{ width: '100%' }} showTime />
-                </Col>
-              </Row>
-            </Col>
-            <Divider />
-            <Col span={9}>타입</Col>
-            <Col span={15}>
-              <Radio.Group>
-                <Radio value={1}>전체</Radio>
-                <Radio value={2}>BET</Radio>
-                <Radio value={3}>WIN</Radio>
-              </Radio.Group>
-            </Col>
-            <Divider />
-            <Col span={9}>상태</Col>
-            <Col span={15}>
-              <Radio.Group>
-                <Radio value={1}>전체</Radio>
-                <Radio value={2}>성공</Radio>
-                <Radio value={3}>베팅취소</Radio>
-              </Radio.Group>
-            </Col>
-            <Divider />
-            <Col span={9}>상세내역 여부</Col>
-            <Col span={15}>
-              <Radio.Group>
-                <Radio value={1}>전체</Radio>
-                <Radio value={2}>성공</Radio>
-                <Radio value={3}>대기</Radio>
-              </Radio.Group>
-            </Col>
-          </Row>
-        </div>
-        <Button
-          style={{ marginTop: '20px', fontSize: '20px', fontWeight: 700 }}
-          size="large"
-          type={'primary'}
-          onClick={toggleCalc}
-          className="full-width">
-          검색
-        </Button>
+        <Form>
+          <div style={{ padding: '1rem' }}>
+            <Title level={2}>게임 내역</Title>
+            <Title level={4}>검색</Title>
+
+            <Row gutter={[10, 10]} style={{ width: '100%', marginTop: '20px' }}>
+              <Col span={9}>소속 에이전트</Col>
+              <Col span={15}>
+                <Form.Item
+                  initialValue={'lucy'}
+                  name={'ok'}
+                  rules={[{ required: true, message: 'Field is required!' }]}>
+                  <Select allowClear size="large" style={{ width: '100%' }}>
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="disabled" disabled>
+                      Disabled
+                    </Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              <Divider />
+              <Col span={9}>벤더</Col>
+              <Col span={15}>
+                <Form.Item
+                  initialValue={'lucy'}
+                  name={'ok2'}
+                  rules={[{ required: true, message: 'Field is required!' }]}>
+                  <Select allowClear size="large" style={{ width: '100%' }}>
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="disabled" disabled>
+                      Disabled
+                    </Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              <Divider />
+              <Col span={9}>기간</Col>
+              <Col span={15}>
+                <Row gutter={[20, 0]}>
+                  <Col span={12}>
+                    <Form.Item name={'ok4'} rules={[{ required: true, message: 'Field is required!' }]}>
+                      <DatePicker size="large" style={{ width: '100%' }} showTime />
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item name={'ok3424'} rules={[{ required: true, message: 'Field is required!' }]}>
+                      <DatePicker size="large" style={{ width: '100%' }} showTime />
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Col>
+              <Divider />
+              <Col span={9}>타입</Col>
+              <Col span={15}>
+                <Form.Item initialValue={1} name={'ok3'} rules={[{ required: true, message: 'Field is required!' }]}>
+                  <Radio.Group>
+                    <Radio value={1}>전체</Radio>
+                    <Radio value={2}>BET</Radio>
+                    <Radio value={3}>WIN</Radio>
+                  </Radio.Group>
+                </Form.Item>
+              </Col>
+              <Divider />
+              <Col span={9}>상태</Col>
+              <Col span={15}>
+                <Form.Item initialValue={1} name={'ok3'} rules={[{ required: true, message: 'Field is required!' }]}>
+                  <Radio.Group>
+                    <Radio value={1}>전체</Radio>
+                    <Radio value={2}>성공</Radio>
+                    <Radio value={3}>베팅취소</Radio>
+                  </Radio.Group>
+                </Form.Item>
+              </Col>
+              <Divider />
+              <Col span={9}>상세내역 여부</Col>
+              <Col span={15}>
+                <Form.Item initialValue={1} name={'ok3'} rules={[{ required: true, message: 'Field is required!' }]}>
+                  <Radio.Group>
+                    <Radio value={1}>전체</Radio>
+                    <Radio value={2}>성공</Radio>
+                    <Radio value={3}>대기</Radio>
+                  </Radio.Group>
+                </Form.Item>
+              </Col>
+            </Row>
+          </div>
+          <Button
+            htmlType="submit"
+            style={{ marginTop: '20px', fontSize: '20px', fontWeight: 700 }}
+            size="large"
+            type={'primary'}
+            onClick={toggleCalc}
+            className="full-width">
+            검색
+          </Button>
+        </Form>
         {hasCalc && (
           <Row className="dashboard__calc">
             <Col style={{ padding: '15px 45px' }} flex={1}>
