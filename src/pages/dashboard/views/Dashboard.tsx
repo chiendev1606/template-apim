@@ -272,7 +272,8 @@ const Dashboard: React.FC = (): JSX.Element => {
               rowData={rowData}
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
-              onGridReady={onGridReady}></AgGridReact>
+              onGridReady={onGridReady}
+              pagination={true}></AgGridReact>
           </div>
         </div>
       </div>
