@@ -5,7 +5,7 @@ import { Avatar, Col, Dropdown, Menu, Row, Select, Space, Typography } from 'ant
 // import { useSelector } from 'react-redux';
 // import { history } from 'utils/history';
 // import { useHistory } from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import { changeLanguageInput, collapseSidebar } from 'store/common/commonSlice';
 // import { changeLanguageInput } from 'store/common/commonSlice';
 import './styles/_header.scss';
@@ -19,7 +19,7 @@ const items = [
 const Header = () => {
   // const { i18n } = useTranslation();
   // const dispatch = useAppDispatch();O
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
   // const collapsed = useSelector((state: any) => state.common.isCloseSidebar);
 

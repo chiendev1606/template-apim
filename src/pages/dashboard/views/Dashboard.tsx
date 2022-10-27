@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, DatePicker, Divider, Radio, Row, Select, Space, Table, Tag, Typography } from 'antd';
+import { Button, Col, DatePicker, Divider, Radio, Row, Select, Space, Table, Typography } from 'antd';
 import { CheckOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import './../styles/dashboard.scss';
 import { ColumnsType } from 'antd/es/table';
@@ -8,11 +8,30 @@ const { Title } = Typography;
 const { Option } = Select;
 
 interface DataType {
-  key: string;
+  key: string | number;
   name: string;
   age: number;
   address: string;
-  tags: string[];
+  tags: string;
+  [props: string]: any;
+}
+
+const dataSource: DataType[] = [];
+
+for (let i = 0; i < 100; i++) {
+  dataSource.push({
+    key: i,
+    name: 'Mike' + i,
+    age: i + 10,
+    address: '10 Downing Street' + i,
+    tags: '123',
+    tags1: '234',
+    tags2: '234',
+    tags3: '36534',
+    tags4: '345',
+    tags5: '345345',
+    tags6: '35435',
+  });
 }
 
 const columns: ColumnsType<DataType> = [
@@ -43,38 +62,38 @@ const columns: ColumnsType<DataType> = [
   {
     title: '상태',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags1',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: '벤더',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags2',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: '게임',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags3',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: '처리금액',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags4',
   },
   {
     title: '이전금액',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags5',
   },
   {
     title: '처리일',
     key: 'tags',
-    dataIndex: 'tags',
+    dataIndex: 'tags6',
   },
 ];
 
@@ -254,7 +273,12 @@ const Dashboard: React.FC = (): JSX.Element => {
         </div>
       </div>
       <div style={{ marginTop: '10px' }}>
-        <Table columns={columns} dataSource={[]} />
+        <Table
+          columns={columns}
+          rowKey={'key'}
+          pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '20', '30'] }}
+          dataSource={dataSource}
+        />
       </div>
     </div>
   );

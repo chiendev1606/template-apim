@@ -2,7 +2,6 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 
 import auth from 'pages/auth/store/AuthSlice';
-import order from 'pages/order/store/OrderSlice';
 
 import { apiStore } from './storeApi';
 
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   [apiStore.reducerPath]: apiStore.reducer,
   common,
   auth,
-  order,
 });
 
 const middlewareHandler = (getDefaultMiddleware: any) => {

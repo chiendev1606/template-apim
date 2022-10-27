@@ -1,5 +1,4 @@
-// import { getBase64 } from './../../../utils/helpers';
-import { getBase64 } from '@/utils/helpers';
+import { getBase64 } from 'utils/helpers';
 import { notification } from 'antd';
 import { ChangeEvent, useEffect, useState } from 'react';
 // import { ImageDisplay } from './../model/product';

@@ -8,12 +8,20 @@
       }
     ],
     "@babel/preset-typescript"
-    ],
-    "plugins": [
+  ],
+  "plugins": [
     [
       "@babel/plugin-transform-runtime",
       {
         "regenerator": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./src"
+        }
       }
     ]
   ]

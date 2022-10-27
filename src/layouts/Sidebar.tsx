@@ -8,10 +8,11 @@ import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { NavItem } from './models/NavModel';
 import './styles/_sidebar.scss';
 import { collapseSidebar } from 'store/common/commonSlice';
+import logo from 'assets/images/logo.png';
 
 // import { use } from 'i18next';
 import { useAppDispatch, useAppSelector } from 'hooks/hookStore';
-const logo = require('assets/images/logo.png');
+// const logo = require('assets/images/logo.png');
 
 const { SubMenu } = Menu;
 // import PermissionRoute from './../middleware/PermissionRoute';

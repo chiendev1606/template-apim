@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "src/types/index.d.ts"],
     "baseUrl": "./src",
-//    "paths": {
-//      "@/*": [
-//        "./src/*"
-//      ]
-//    },
-     "paths": {
-       "@/*": ["*"],
-    //   "helpers": ["helpers/*"],
-    //   "components": ["components/*"],
-    //   "assets": ["assets/*"],
-    //   "utils": ["utils/*"],
-    //   "store": ["store/*"],
-     },
+    // "paths": {
+    //   "@/*": ["./src/*"]
+    // },
+    "paths": {
+      "@/*": ["*"]
+      //   "helpers": ["helpers/*"],
+      //   "components": ["components/*"],
+      //   "assets": ["assets/*"],
+      //   "utils": ["utils/*"],
+      //    //   "store": ["store/*"],
+    },
     "target": "ES5" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
     "module": "ESNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
     "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */ /* Type declaration files to be included in compilation. */,
@@ -27,12 +26,9 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-     "allowJs": true /* Allow javascript files to be compiled. Useful when migrating JS to TS */,
+    "allowJs": true /* Allow javascript files to be compiled. Useful when migrating JS to TS */
     // "checkJs": true /* Report errors in .js files. Works in tandem with allowJs. */,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"] // *** The files to not type check ***
+  "include": ["src/**/*", "src/types/index.d.ts"],
+  "exclude": ["node_modules", "build", "babel.config.js", "metro.config.js", "jest.config.js"] // *** The files to not type check ***
 }

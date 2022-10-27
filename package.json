@@ -64,6 +64,7 @@
         "@typescript-eslint/eslint-plugin": "^5.4.0",
         "@typescript-eslint/parser": "^5.4.0",
         "babel-loader": "^8.2.2",
+        "babel-plugin-module-resolve": "^1.4.4",
         "babel-plugin-module-resolver": "^4.1.0",
         "css-loader": "^6.5.1",
         "dotenv-webpack": "^7.1.0",
