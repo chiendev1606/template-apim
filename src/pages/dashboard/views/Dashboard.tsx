@@ -1,105 +1,68 @@
-import React, { useState } from 'react';
-import { Button, Col, DatePicker, Divider, Form, Radio, Row, Select, Space, Table, Typography } from 'antd';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Button, Col, DatePicker, Divider, Form, Radio, Row, Select, Space, Typography } from 'antd';
 import { CheckOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import './../styles/dashboard.scss';
-import { ColumnsType } from 'antd/es/table';
+
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 const { Title } = Typography;
 const { Option } = Select;
 
-interface DataType {
-  key: string | number;
-  name: string;
-  age: number;
-  address: string;
-  tags: string;
-  [props: string]: any;
-}
-
-const dataSource: DataType[] = [];
-
-for (let i = 0; i < 100; i++) {
-  dataSource.push({
-    key: i,
-    name: 'Mike' + i,
-    age: i + 10,
-    address: '10 Downing Street' + i,
-    tags: '123',
-    tags1: '234',
-    tags2: '234',
-    tags3: '36534',
-    tags4: '345',
-    tags5: '345345',
-    tags6: '35435',
-  });
-}
-
-const columns: ColumnsType<DataType> = [
-  {
-    title: '트랜잭션ID',
-    dataIndex: 'name',
-    key: 'name',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
+const filterParams = {
+  comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+    const dateAsString = cellValue;
+    if (dateAsString == null) return -1;
+    const dateParts = dateAsString.split('/');
+    const cellDate = new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
+    if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+      return 0;
+    }
+    if (cellDate < filterLocalDateAtMidnight) {
+      return -1;
+    }
+    if (cellDate > filterLocalDateAtMidnight) {
+      return 1;
+    }
   },
-  {
-    title: '소속 에이전트',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: '유저',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: '타입',
-    key: 'tags',
-    dataIndex: 'tags',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: '상태',
-    key: 'tags',
-    dataIndex: 'tags1',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: '벤더',
-    key: 'tags',
-    dataIndex: 'tags2',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: '게임',
-    key: 'tags',
-    dataIndex: 'tags3',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: '처리금액',
-    key: 'tags',
-    dataIndex: 'tags4',
-  },
-  {
-    title: '이전금액',
-    key: 'tags',
-    dataIndex: 'tags5',
-  },
-  {
-    title: '처리일',
-    key: 'tags',
-    dataIndex: 'tags6',
-  },
-];
+  browserDatePicker: true,
+};
 
 const Dashboard: React.FC = (): JSX.Element => {
   // const { t } = useTranslation();
   const [hasCalc, setHasCalc] = useState(false);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '500px', width: '100%' }), []);
+  const [rowData, setRowData] = useState();
+  const [columnDefs, setColumnDefs] = useState([
+    { field: 'athlete', sortable: true },
+    { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 100, sortable: true },
+    { field: 'country', sortable: true },
+    { field: 'year', maxWidth: 100, sortable: true },
+    {
+      field: 'date',
+      filter: 'agDateColumnFilter',
+      filterParams: filterParams,
+      sortable: true,
+    },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter', sortable: true },
+    { field: 'silver', filter: 'agNumberColumnFilter', sortable: true },
+    { field: 'bronze', filter: 'agNumberColumnFilter', sortable: true },
+    { field: 'total', filter: false, sortable: true },
+  ]);
+  const defaultColDef = useMemo(() => {
+    return {
+      editable: true,
+    };
+  }, []);
+
+  const onGridReady = useCallback((params) => {
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+      .then((resp) => resp.json())
+      .then((data) => setRowData(data));
+  }, []);
 
   const toggleCalc = () => setHasCalc(!hasCalc);
 
@@ -296,13 +259,22 @@ const Dashboard: React.FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div style={{ marginTop: '10px' }}>
-        <Table
-          columns={columns}
-          rowKey={'key'}
-          pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '20', '30'] }}
-          dataSource={dataSource}
-        />
+      <div style={{ marginTop: '30px', paddingBottom: '50px' }}>
+        {/*<Table*/}
+        {/*  columns={columns}*/}
+        {/*  rowKey={'key'}*/}
+        {/*  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '20', '30'] }}*/}
+        {/*  dataSource={dataSource}*/}
+        {/*/>*/}
+        <div style={containerStyle}>
+          <div style={gridStyle} className="ag-theme-alpine">
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={columnDefs}
+              defaultColDef={defaultColDef}
+              onGridReady={onGridReady}></AgGridReact>
+          </div>
+        </div>
       </div>
     </div>
   );
